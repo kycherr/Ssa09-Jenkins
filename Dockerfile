@@ -1,5 +1,15 @@
 FROM nginx:latest
 
+# drop symlinks
+RUN unlink /var/log/nginx/access.log
+RUN unlink /var/log/nginx/error.log
+
+RUN rm /etc/nginx/nginx.conf
+
+# Copy nginx.conf file
+COPY nginx.conf /etc/nginx/nginx.conf
+
+
 # Copy index.html file
 COPY index.html /usr/share/nginx/html/index.html
 
