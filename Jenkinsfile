@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+        agent {
+        label 'jen-job.kwds.net.ua'
+    }
     
     environment {
         CONTAINER_NAME = 'nginx_ssa_demo'
