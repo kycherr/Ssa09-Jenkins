@@ -34,14 +34,14 @@ pipeline {
         stage('Check Content') {
             steps {
                 script {
-                    def response = sh(script: 'curl -s http://localhost:8080/', returnStdout: true, returnStatus: true)
-                    
-                    if (response != 0) {
-                        error "Failed to check content"
-                    } else if (!response.trim().contains('Hello, World!')) {
+                    def curlOutput = sh(script: 'curl -s http://localhost:8080/', returnStdout: true)
+                    def curlExitStatus = sh(script: 'echo $?', returnStatus: true)
+            
+                    if (curlExitStatus != 0) {
+                        error "Failed to execute curl command"
+                    } else if (!curlOutput.trim().contains('Hello, World!')) {
                         error "Content 'Hello, World!' is not present on the running container"
                     }
-                }
             }
         }
         
