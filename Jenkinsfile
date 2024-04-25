@@ -5,7 +5,7 @@ pipeline {
     
     environment {
         CONTAINER_NAME = 'nginx_ssa_demo'
-        IMAGE_NAME = 'nginx:latest'
+        IMAGE_NAME = 'nginx_hello_world'
     }
     
     stages {
