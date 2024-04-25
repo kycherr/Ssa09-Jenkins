@@ -1,10 +1,10 @@
 FROM nginx:latest
 
 # Remove default nginx configuration
-#RUN rm /etc/nginx/conf.d/default.conf
+RUN rm /etc/nginx/conf.d/default.conf
 
 # Copy custom nginx configuration
-#COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy index.html file
 COPY index.html /usr/share/nginx/html/index.html
